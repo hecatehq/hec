@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 set -eu
 
-repo="${HCLOUD_INSTALL_REPO:-hecatehq/hcloud}"
-version="${HCLOUD_VERSION:-latest}"
-install_dir="${HCLOUD_INSTALL_DIR:-${HOME:-.}/.local/bin}"
+repo="${HEC_INSTALL_REPO:-hecatehq/hec}"
+version="${HEC_VERSION:-latest}"
+install_dir="${HEC_INSTALL_DIR:-${HOME:-.}/.local/bin}"
 
 need() {
   if ! command -v "$1" >/dev/null 2>&1; then
-    echo "hcloud installer needs '$1' on PATH" >&2
+    echo "hec installer needs '$1' on PATH" >&2
     exit 2
   fi
 }
@@ -23,7 +23,7 @@ download() {
     wget -q "$url" -O "$output"
     return
   fi
-  echo "hcloud installer needs curl or wget on PATH" >&2
+  echo "hec installer needs curl or wget on PATH" >&2
   exit 2
 }
 
@@ -49,8 +49,8 @@ need tar
 need awk
 need install
 
-asset="hcloud_${os}_${arch}.tar.gz"
-checksums="hcloud_checksums.txt"
+asset="hec_${os}_${arch}.tar.gz"
+checksums="hec_checksums.txt"
 
 if [ "$version" = "latest" ]; then
   base_url="https://github.com/${repo}/releases/latest/download"
@@ -84,10 +84,10 @@ fi
 
 tar -xzf "${tmp_dir}/${asset}" -C "$tmp_dir"
 mkdir -p "$install_dir"
-install -m 0755 "${tmp_dir}/hcloud" "${install_dir}/hcloud"
+install -m 0755 "${tmp_dir}/hec" "${install_dir}/hec"
 
-echo "hcloud installed to ${install_dir}/hcloud"
+echo "hec installed to ${install_dir}/hec"
 case ":$PATH:" in
   *":${install_dir}:"*) ;;
-  *) echo "Add ${install_dir} to PATH if hcloud is not found by your shell." ;;
+  *) echo "Add ${install_dir} to PATH if hec is not found by your shell." ;;
 esac
