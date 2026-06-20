@@ -34,9 +34,34 @@ hec login
 hec deployments
 hec open
 hec update
+hec self update
 ```
 
 Run `hec --help` for the current command list.
+
+## Update
+
+```sh
+hec self update
+```
+
+To install a specific CLI version:
+
+```sh
+hec self update --version v0.1.0-alpha.3
+```
+
+## Uninstall
+
+```sh
+hec self uninstall
+```
+
+For shell-only uninstall:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/hecatehq/hec/main/install.sh | HEC_UNINSTALL=1 sh
+```
 
 ## License
 

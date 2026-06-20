@@ -5,6 +5,14 @@ repo="${HEC_INSTALL_REPO:-hecatehq/hec}"
 version="${HEC_VERSION:-latest}"
 install_dir="${HEC_INSTALL_DIR:-${HOME:-.}/.local/bin}"
 
+case "$(printf '%s' "${HEC_UNINSTALL:-}" | tr '[:upper:]' '[:lower:]')" in
+  1 | true | yes | on)
+    rm -f "${install_dir}/hec"
+    echo "hec removed from ${install_dir}/hec"
+    exit 0
+    ;;
+esac
+
 need() {
   if ! command -v "$1" >/dev/null 2>&1; then
     echo "hec installer needs '$1' on PATH" >&2
