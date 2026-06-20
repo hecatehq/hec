@@ -37,7 +37,8 @@ hec update
 hec self update
 ```
 
-Run `hec --help` for the current command list.
+Run bare `hec` for an interactive menu with arrow-key navigation, or
+`hec --help` for the current command list.
 
 ## Update
 
