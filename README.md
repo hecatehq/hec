@@ -49,7 +49,7 @@ hec self update
 To install a specific CLI version:
 
 ```sh
-hec self update --version v0.1.0-alpha.3
+hec self update --version v0.1.0
 ```
 
 ## Uninstall

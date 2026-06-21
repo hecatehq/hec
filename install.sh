@@ -94,7 +94,10 @@ tar -xzf "${tmp_dir}/${asset}" -C "$tmp_dir"
 mkdir -p "$install_dir"
 install -m 0755 "${tmp_dir}/hec" "${install_dir}/hec"
 
-echo "hec installed to ${install_dir}/hec"
+echo "hec installed"
+echo "Path: ${install_dir}/hec"
+echo "Source: ${repo} (${version})"
+echo "Next: hec --version"
 case ":$PATH:" in
   *":${install_dir}:"*) ;;
   *) echo "Add ${install_dir} to PATH if hec is not found by your shell." ;;
